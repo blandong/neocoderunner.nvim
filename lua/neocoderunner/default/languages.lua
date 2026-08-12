@@ -74,21 +74,38 @@ local languages = {
         extensions = { "zig" },
         runner = function(fullpath)
             return "zig run " .. fullpath
-        end
+        end,
+    },
+    sh = {
+        extensions = { "sh", "bash" },
+        headers = { "#!/bin/bash", "#!/usr/bin/env bash", "#!/bin/sh" },
+        runner = function(fullpath)
+            return "bash " .. fullpath
+        end,
     },
     -- This is left empty on purpose for the user to define in the runners.json file
     global = {
         extensions = {},
         runner = function()
             return ""
-        end
+        end,
     },
     -- Don't forget to add new languages to the order table below
     order = {
-        "global", "c", "cpp", "lua", "python", "rust",
-        "javascript", "typescript", "perl", "go", "php",
+        "global",
+        "c",
+        "cpp",
+        "lua",
+        "python",
+        "rust",
+        "javascript",
+        "typescript",
+        "perl",
+        "go",
+        "php",
         "zig",
-    }
+        "sh",
+    },
 }
 
 return languages
